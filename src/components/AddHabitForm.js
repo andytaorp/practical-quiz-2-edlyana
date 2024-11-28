@@ -1,37 +1,31 @@
 import React, { useState } from "react";
 
-export default function AddHabitForm({ handleAddHabit }) {
+export default function AddHabitForm({ onAddHabit }) {
   const [habitName, setHabitName] = useState("");
 
   const handleSubmit = (e) => {
     // TODO: write code to handle form submission
     e.preventDefault();
-
     if (!habitName.trim()) { 
       return;
     }
-
-    handleAddHabit(habitName);
-
+    onAddHabit(habitName);
     setHabitName("");
   };
 
-
-  const handleHabitChange = (e) => {
+  const handleChange = (e) => {
     setHabitName(e.target.value)
   };
 
   return (
     //TODO: add a form to add a new habit
-    <form className="add-form" onSubmit={handleSubmit}>
-      <div className="phone">
-        <input
-          placeholder="New Habit"
-          value={habitName}
-          onChange={handleHabitChange}
-        />
-      </div>
-      <button>Add Habit</button>
-    </form>
+    <div>
+      <form className="add-form" onSubmit={handleSubmit}>
+        <div className="phone">
+          <input placeholder="Type New Habit" value={habitName} onChange={handleChange}/>
+        </div>
+        <button>Add Habit</button>
+      </form>
+    </div>
   );
 }

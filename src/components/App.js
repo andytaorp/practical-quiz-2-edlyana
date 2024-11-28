@@ -5,12 +5,12 @@ import HabitList from "./HabitList";
 function App() {
   const [habits, setHabits] = useState([]);
 
-  const handleAddHabit = (habitName) => {
+  const onAddHabit = (habitName) => {
     // TODO: write code to add a new habit here
       const newHabit = {
         id: Date.now(),
         name: habitName,
-        completed: false,
+        checked: false,
       };
       setHabits((prevHabits) => [...prevHabits, newHabit]);
     };
@@ -19,9 +19,7 @@ function App() {
     // TODO: write code to toggle a habit's status
     setHabits((prevHabits) =>
       prevHabits.map((habit) =>
-        habit.id === id ? { ...habit, completed: !habit.completed } : habit
-      )
-    );
+        habit.id === id ? { ...habit, checked : !habit.checked } : habit));
   };
 
   const onDeleteHabit = (id) => {
@@ -33,15 +31,9 @@ function App() {
     <div>
       <h1>Habit Tracker</h1>
       {/*TODO: add a form to add a new habit*/}
-      <AddHabitForm
-        handleAddHabit={handleAddHabit}
-      />
+      <AddHabitForm onAddHabit={onAddHabit}/>
       {/*TODO: add a list of habits*/}
-      <HabitList
-        habits={habits}
-        onToggleHabit={onToggleHabit}
-        onDeleteHabit={onDeleteHabit}
-      />
+      <HabitList habits={habits} onToggleHabit={onToggleHabit} onDeleteHabit={onDeleteHabit}/>
     </div>
   );
 }
