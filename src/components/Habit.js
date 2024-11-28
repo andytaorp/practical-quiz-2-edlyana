@@ -6,15 +6,20 @@ import React from "react";
  *
  * TODO: implement the Habit component here
  */
-export default function Habit({habits, handleToggleHabit, onRemove}) {
+export default function Habit({habits, handleToggleHabit, handleDeleteHabit}) {
     return(
-        <div>
-            <li>
-                <li style={habits.checked ? { textDecoration: "line-through" } : {}}>
-                    <input type="checkbox" onChange={(e) => handleToggleHabit(habits.id, e.target.checked)} handleToggleHabit={handleToggleHabit}></input>
-                </li>
-                <li><button onClick={() => onRemove(habits.id)} style={{marginLeft: 5, color: "red"}}>X</button></li>
-            </li>
-        </div>
+        <li style={habits.checked ? { textDecoration: "line-through" } : {}}>
+      <label>
+        <input
+          type="checkbox"
+          checked={habits.checked}
+          onChange={(e) => handleToggleHabit(habits.id, e.target.checked)}
+        />
+        {habits.name}
+      </label>
+      <button onClick={() => handleDeleteHabit(habits.id)} style={{ marginLeft: 5, color: "red" }}>
+        X
+      </button>
+    </li>
     )
 }
