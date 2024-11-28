@@ -15,7 +15,7 @@ function App() {
       setHabits((prevHabits) => [...prevHabits, newHabit]);
     };
 
-  const handleToggleHabit = (id) => {
+  const onToggleHabit = (id) => {
     // TODO: write code to toggle a habit's status
     setHabits((prevHabits) =>
       prevHabits.map((habit) =>
@@ -24,7 +24,7 @@ function App() {
     );
   };
 
-  const handleDeleteHabit = (id) => {
+  const onDeleteHabit = (id) => {
     // TODO: write code to delete a habit
     setHabits((prevHabits) => prevHabits.filter((habit) => habit.id !== id));
   };
@@ -39,8 +39,8 @@ function App() {
       {/*TODO: add a list of habits*/}
       <HabitList
         habits={habits}
-        handleToggleHabit={handleToggleHabit}
-        handleDeleteHabit={handleDeleteHabit}
+        onToggleHabit={onToggleHabit}
+        onDeleteHabit={onDeleteHabit}
       />
     </div>
   );
